@@ -1,0 +1,16 @@
+h1 {
+    color: hotpink;
+}
+
+.goat {
+    text-align: center;
+    margin: 0.2rem;
+}
+
+.young {
+    border: 3px solid lightgreen;
+}
+
+.old {
+    border: 3px solid grey;
+}
