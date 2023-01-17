@@ -42,4 +42,36 @@ async function callTheHerd() {
     data.forEach(g => createGoatCard(g));
 };
 
+document.querySelector("form").addEventListener("submit", (e) => {
+
+    e.preventDefault(); //stop the form interfering 
+
+    const goat = {
+        name: e.target.name.value,
+        ages: e.target.age.value,
+        sex: e.target.sex.value,
+        favouriteColour: e.target.colour.value
+    }
+
+    const options = {
+        method: "POST",
+        body: JSON.stringify(goat),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }
+    console.log(goat);
+
+    fetch("http://localhost:3000/goats", options)
+        .then(res => res.json())
+        .then(data => createGoatCard(data))
+        .catch(err => {
+            console.log(err);
+            alert("One of our goats is missing!");        
+        })
+})
+
+
+
 callTheHerd();
